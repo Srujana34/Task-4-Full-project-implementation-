@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      color: #333;
+    }
+
+    header {
+      background: #003f5c;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5em 2em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 3em;
+      max-width: 1000px;
+      margin: auto;
+      background: #ffffff;
+      margin-top: 2em;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .project {
+      border: 1px solid #b2ebf2;
+      padding: 1.5em;
+      margin: 1.5em 0;
+      border-radius: 10px;
+      background: #e0f2f1;
+      transition: transform 0.3s;
+    }
+
+    .project:hover {
+      transform: scale(1.03);
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 1em;
+      margin: 1em 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      padding: 1em 2em;
+      background: #00838f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background: #004d40;
+    }
+
+    footer {
+      margin-top: 2em;
+      text-align: center;
+      padding: 1em;
+      background: #003f5c;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav {
+        margin-top: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">G MOUKTHIKA SRI SRUJANA</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2></br>
+    <p>I am a passionate front-end web developer with a strong foundation in HTML, CSS, and JavaScript. I specialize in creating responsive, user-friendly websites that deliver great user experiences. I enjoy bringing creative ideas to life through clean code and interactive designs, and I am always eager to learn new technologies and improve my skills.I have hands-on experience with tools like Visual Studio Code, Git/GitHub, and basic knowledge of frameworks like Bootstrap and ReactJS</p></br>
+    <p>I also enjoy working in team environments and believe strong communication and problem-solving are essential in building great software.My long-term goal is to become a full-stack web developer and contribute to meaningful, scalable web applications</p>
+  </section>
+
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project">
+      <h3>To-Do List App</h3>
+      <p>This project is a simple yet powerful task management application that allows users to add, delete, and manage their daily tasks efficiently. Built using HTML, CSS, and JavaScript, it uses the browser’s localStorage to ensure that tasks are saved even after closing the tab. The design is clean and responsive, making it easy for users to stay organized on any device.</p>
+    </div>
+    <div class="project">
+      <h3>Product Listing Page</h3>
+      <p>This is a mock e-commerce product display page where users can browse a collection of products and apply filters based on categories, price ranges, and customer ratings. The layout is fully responsive and developed with modern HTML, CSS, and JavaScript techniques. The interface is user-friendly and dynamic, offering real-time filtering and sorting for an enhanced shopping experience.</p>
+    </div>
+    <div class="project">
+      <h3>Event Organizer Website</h3>
+      <p>This website is a comprehensive platform for managing and promoting events online. It features user authentication, event submission, and real-time event listings. Users can view event details, filter events by date or category, and explore them through an intuitive UI. The project demonstrates intermediate-to-advanced HTML, CSS, and JavaScript skills, reflecting real-world web development practices with responsive design and dynamic functionality.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Your Name" required />
+      <input type="email" id="email" placeholder="Your Email" required />
+      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio </p>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !message) {
+        alert("Please fill all fields!");
+      } else {
+        alert("Message sent successfully!");
+        // Optionally, reset the form
+        document.getElementById("contactForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>

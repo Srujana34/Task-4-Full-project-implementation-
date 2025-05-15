@@ -1,0 +1,175 @@
+<!-- Product Listing Page with Images and More Items -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Shop</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #fce4ec, #f3e5f5);
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #6a1b9a;
+      margin-bottom: 20px;
+    }
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    select {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #aaa;
+      font-size: 16px;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background: #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      text-align: center;
+    }
+    .product:hover {
+      transform: scale(1.05);
+    }
+    .product img {
+      width: 100%;
+      height: 150px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .product h3 {
+      margin-bottom: 10px;
+      color: #4a148c;
+    }
+    .product p {
+      margin: 6px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>Explore Our Smart Shop</h2>
+
+  <div class="filters">
+    <select id="categoryFilter" onchange="filterProducts()">
+      <option value="all">All Categories</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+      <option value="home-appliances">Home Appliances</option>
+      <option value="accessories">Accessories</option>
+    </select>
+
+    <select id="sortFilter" onchange="filterProducts()">
+      <option value="default">Sort by</option>
+      <option value="price">Price: Low to High</option>
+      <option value="rating">Rating: High to Low</option>
+    </select>
+  </div>
+
+  <div class="products" id="productList"></div>
+
+  <script>
+    const products = [
+      {
+        name: "Smartphone", category: "electronics", price: 500, rating: 4.5,
+        image: "smartphone.jpeg"
+      },
+      {
+        name: "Laptop", category: "electronics", price: 900, rating: 4.8,
+        image: "laptop.jpg"
+      },
+      {
+        name: "Bluetooth Speaker", category: "electronics", price: 150, rating: 4.4,
+        image: "Bluetoothspeaker.jpg"
+      },
+      {
+        name: "Jeans", category: "clothing", price: 40, rating: 4.0,
+        image: "jeans.jpeg"
+      },
+      {
+        name: "T-Shirts", category: "clothing", price: 20, rating: 3.9,
+        image: "tshirts.jpeg"
+      },
+      {
+        name: "Hoodies", category: "clothing", price: 50, rating: 4.2,
+        image: "hoodies.webp"
+      },
+      {
+        name: "Microwave Oven", category: "home-appliances", price: 150, rating: 4.4,
+        image: "microwaveoven.avif"
+      },
+      {
+        name: "Refrigerator", category: "home-appliances", price: 700, rating: 4.6,
+        image: "Refrigerator.jpg"
+      },
+      {
+        name: "Washing Machine", category: "home-appliances", price: 500, rating: 4.3,
+        image: "washingmachine.png"
+      },
+      {
+        name: "Wrist Watch", category: "accessories", price: 120, rating: 4.1,
+        image: "wristwatch.webp"
+      },
+      {
+        name: "Sunglasses", category: "accessories", price: 60, rating: 4.3,
+        image: "sunglasses.jpg"
+      },
+      {
+        name: "Backpack", category: "accessories", price: 80, rating: 4.0,
+        image: "backpack.jpg"
+      }
+    ];
+
+    function filterProducts() {
+      const category = document.getElementById("categoryFilter").value;
+      const sort = document.getElementById("sortFilter").value;
+      let filtered = [...products];
+
+      if (category !== "all") {
+        filtered = filtered.filter(p => p.category === category);
+      }
+
+      if (sort === "price") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === "rating") {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      displayProducts(filtered);
+    }
+
+    function displayProducts(items) {
+      const productList = document.getElementById("productList");
+      productList.innerHTML = "";
+      items.forEach(p => {
+        productList.innerHTML += `
+          <div class="product">
+            <img src="${p.image}" alt="${p.name}" />
+            <h3>${p.name}</h3>
+            <p><strong>Category:</strong> ${p.category}</p>
+            <p><strong>Price:</strong> $${p.price}</p>
+            <p><strong>Rating:</strong> ${p.rating}</p>
+          </div>
+        `;
+      });
+    }
+
+    filterProducts();
+  </script>
+</body>
+</html>
